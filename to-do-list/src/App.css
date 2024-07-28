@@ -1,10 +1,14 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .App {
   text-align: center;
+}
+.App h1{
+  margin: 20px 0px;
 }
 
 form{
@@ -46,6 +50,7 @@ form button{
 .outerDiv ul li span{
   position: absolute;
   right: 10px;
+  cursor: pointer;
 }
 
 .completeToDo{

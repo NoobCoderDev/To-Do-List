@@ -1,20 +1,23 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import { findDOMNode } from 'react-dom';
+// import { findDOMNode } from 'react-dom';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 function App() {
+  
   let [ToDoList,setToDoList] = useState([]);
 
   let saveToDoList = (event)=>{
-
     let todoName = event.target.todoName.value;
     if(!ToDoList.includes(todoName)){
       let finalToDoList = [...ToDoList,todoName];
       setToDoList(finalToDoList);
+      NotificationManager.success('Item Successfully Added.');
     }
     else{
-      alert("Item already exists...")
+      NotificationManager.warning('Item Already Exists.');
     }
     event.preventDefault();
   }
@@ -25,8 +28,10 @@ function App() {
       <ToDoListItems value={value} key={index} indexNumber = {index} ToDoList={ToDoList} setToDoList={setToDoList}/>
     )
   })
+
   return (
     <div className="App">
+      <NotificationContainer/>
       <h1>To-Do-List</h1>
       <form onSubmit={saveToDoList}>
         <input type='text' name='todoName'></input>
